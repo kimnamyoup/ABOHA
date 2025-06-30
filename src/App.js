@@ -8,9 +8,14 @@ function App() {
   return (
     <div className="App">
 
-    <header className='head'>
+    <div className='main'>
+      <header className='head'>
 
     </header>
+    <h1 className='logo'>
+      
+    </h1>
+    </div>
 
 
       {/* <BrowserRouter>

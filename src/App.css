@@ -1,8 +1,29 @@
 
-.head{
-  margin:  0 auto;
+.App{
+  
+
+
+}
+.main{
   max-width: 400px;
   height: 893px;
-  background-color: #f9f9f9
+  background:linear-gradient(45deg,#EDC971,#3545D6);
+  background-clip: calc(400- 7);
+  margin: 0 auto;
+  border-radius: 32px;
+  border: 6px solid #000;
+  position: relative;
 }
-
+.head {
+  max-width: 400px;
+  height: 44px;
+  background-color: beige;
+}
+.logo{
+  width: 175px;
+  height: 75px;
+  background: url('../src//asset/images/logo/logo.png')no-repeat center center/cover;
+  position: absolute;
+  top: 40%; left: 50%;
+  transform: translateX(-50%);
+}
