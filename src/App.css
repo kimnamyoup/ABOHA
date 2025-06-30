@@ -1,29 +1,33 @@
 
-.App{
-  
-
-
-}
-.main{
-  max-width: 400px;
-  height: 893px;
-  background:linear-gradient(45deg,#EDC971,#3545D6);
-  background-clip: calc(400- 7);
-  margin: 0 auto;
+.phone{
+   width: 400px;
+  height: 852px;
+  border: 8px solid #000;
+  margin-top: 30px;
   border-radius: 32px;
-  border: 6px solid #000;
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+ background-color: #fff;
+overflow: hidden;
 }
-.head {
-  max-width: 400px;
+.stat{
+  width: 400px;
   height: 44px;
-  background-color: beige;
-}
-.logo{
-  width: 175px;
-  height: 75px;
-  background: url('../src//asset/images/logo/logo.png')no-repeat center center/cover;
   position: absolute;
-  top: 40%; left: 50%;
+  z-index: 9999;
+  background: url("../src/asset/images/Status\ Bar.png")no-repeat center center/100%;
+}
+
+
+.botbar{
+  width: 148px;
+  height: 5px;
+  background-color: #000;
+  border-radius: 100px;
+  position: absolute;
+  bottom:1% ; left: 50%;
+  z-index: 9999;
   transform: translateX(-50%);
 }

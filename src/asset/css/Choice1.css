@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+.select1{
+    width: 400px;
+  height: 852px;
+  border-radius: 25px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+ background-color: #fff;
+}
+
+.progress_bar{
+    width: 345px;
+    height: 4px;
+    background-color: rgba(17, 17, 17, 20%);
+    position: absolute;
+    top: 7%; left: 50%;
+    transform: translateX(-50%);
+    border-radius: 99px;
+}
+.cur_bar{
+    width: 100px;
+    height: 4px;
+    background-color: rgba(107, 60, 236, 100%);
+    position: relative;
+    z-index: 99;
+}
+
+.quebox{
+    width: 345px;
+    height: 60px;
+    position: absolute;
+    top: 10%; left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.question{
+    font-size: 25px;
+    display: inline;
+    margin: 0;
+}
+.sub{
+   margin: 0;
+   font-size: 14px;
+   color: #111;
+   opacity: 60%;
+}
+.s_main{
+    position: absolute;
+    top: 20%; left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+}
+.btns{
+    display: flex;
+    gap: 15px;
+}
+.next{
+    position: absolute;
+    bottom: 5%; right: 5%;
+    text-decoration: none;
+    color: #111;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.nb{
+    font-size: 18px;
+}
+.pogressdot{
+    display: block;
+    height: 10px;
+    position: absolute;
+    bottom: 20%; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+.dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background-color: #fff;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    
+}
+.dot:focus{
+    background-color:#6B3CEC;
+}

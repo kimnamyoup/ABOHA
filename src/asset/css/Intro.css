@@ -1,0 +1,36 @@
+@charset "utf-8";
+.view{
+    width: 400px;
+  height: 852px;
+  border-radius: 32px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+ background-color: #fff;
+}
+
+.bg{
+  width: 393px;
+  height: 300px;
+  background:linear-gradient(45deg,#EDC971,#6B3CEC);
+  border-radius: 999px;
+  position: absolute;
+  top: 30%;
+
+  filter: blur(80px);
+  opacity: 70%;
+
+}
+
+
+.logo{
+  width: 175px;
+  height: 75px;
+  background: url("../images/logo/logo.png")no-repeat center center/100%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+}

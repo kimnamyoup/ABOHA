@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.s_btn{
+    padding: 5px 10px;
+    border-radius: 16px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    background-color: #f9f9f9;
+    color: #6B3CEC;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all .3s;
+}
+.s_btn-active{
+   background-color: #6B3CEC;
+   color:#fff; 
+}
+.s_btn_diss{
+    opacity: 0.5;
+  cursor: not-allowed;
+}
