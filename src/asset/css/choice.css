@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.select3{
+    width: 400px;
+  height: 852px;
+  border-radius: 25px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+ background-color: #fff;
+}
