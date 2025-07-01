@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "../css/choice1.css"
+import "../css/Choice1.css"
 import Sbutton from '../component/Sbutton';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaArrowRight } from "react-icons/fa";
@@ -42,6 +42,7 @@ const toggleSelect=(qkey,val)=>{
     const arr=prev[qkey];
     const has=arr.includes(val);
     return {
+      ...prev,
         [qkey]: has
           ? arr.filter(x => x !== val)
           : [val]
@@ -120,6 +121,7 @@ const downJson=()=>{
                 다음 <FaArrowRight className='nb' />
               </button>
             </div> 
+            
        <div className='pogressdot'>
              {dotRoutes.map((path, idx) => (
         <NavLink

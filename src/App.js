@@ -13,7 +13,8 @@ import Login from './asset/page/Login.jsx';
 import {  TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useRef } from 'react';
 import FadeWrapper from './asset/Layout.jsx';
-import Intro from './asset/page/intro.jsx';
+import MainPage from './asset/page/MainPage';
+
 
 
 
@@ -43,6 +44,7 @@ function App() {
               <Route path="/Choice2" element={<Choice2 />} />
               <Route path="/Choice3" element={<Choice3 />} />
               <Route path="/start"   element={<Start />} />
+              <Route path="/MainPage"   element={<MainPage/>} />
             </Routes>
           </FadeWrapper>
         </CSSTransition>

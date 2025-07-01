@@ -1,6 +1,6 @@
 import React from 'react'
-import Intro from './intro';
-import Choice1 from './Choice1';
+import Intro from './Intro';
+
 
 
 const Mainview = () => {

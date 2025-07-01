@@ -10,3 +10,49 @@
   z-index: 10;
  background-color: #fff;
 }
+
+
+.progress_bar{
+    width: 345px;
+    height: 4px;
+    background-color: rgba(17, 17, 17, 20%);
+    position: absolute;
+    top: 7%; left: 50%;
+    transform: translateX(-50%);
+    border-radius: 99px;
+}
+
+.cur_bar3{
+    width: 345px;
+    height: 4px;
+    background-color: rgba(107, 60, 236, 100%);
+    position: relative;
+    z-index: 99;
+}
+
+.next-btn{
+    position: absolute;
+    bottom: 5%; right: 5%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.before-btn{
+    position: absolute;
+    bottom: 5%; left: 5%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+

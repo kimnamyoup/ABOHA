@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router-dom';
 import Choice1 from './Choice1';
 import Mainview from './Mainview';
-import "../css/intro.css"
+import "../css/Intro.css"
 
 const Intro = () => {
   const [loading, setLoding] = useState(true);
