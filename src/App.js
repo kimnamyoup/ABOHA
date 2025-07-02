@@ -15,6 +15,7 @@ import { useRef } from 'react';
 import FadeWrapper from './asset/Layout.jsx';
 import MainPage from './asset/page/MainPage';
 import Shop from './asset/page/Shop.jsx';
+import { UserDataProvider } from './contexts.js';
 
 
 
@@ -27,13 +28,14 @@ function App() {
   const nodeRef = useRef(null);
 
   return (
+    <UserDataProvider>
     <div className='phone'>
      <header className='stat'/>
      <TransitionGroup className="transition-group">
      <CSSTransition
           key={location.pathname}
           nodeRef={nodeRef}           
-          timeout={300}
+          timeout={0}
           classNames="fade"
           unmountOnExit                     
         >
@@ -50,12 +52,11 @@ function App() {
             </Routes>
           </FadeWrapper>
         </CSSTransition>
-      </TransitionGroup>
-     
-    
-      
+      </TransitionGroup>  
       <div className='botbar' />
     </div>
+    </UserDataProvider>
+    
     
 
   );

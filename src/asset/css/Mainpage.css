@@ -114,7 +114,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.dm_mission{
+.dmies{
     width: 350px;
     height: 30px;
     background-color: #fff;
@@ -122,6 +122,9 @@
     border-radius: 5px;
     text-decoration: none;
     color: #6B3CEC;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 .cummunity{
      width: 350px;
@@ -198,3 +201,5 @@
     width: 25px;
     height: 25px;
 }
+
+

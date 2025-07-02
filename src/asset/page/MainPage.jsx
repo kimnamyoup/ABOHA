@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Mainpage.css";
 import { Link, NavLink } from 'react-router-dom';
-import { FaPlus } from "react-icons/fa";
+import { FaCheck, FaPlus, FaSpinner } from "react-icons/fa";
+import { useUserData } from "../../contexts";
 
 const MainPage = () => {
+    const {  missions, loading, generateMissions, userData }= useUserData();
 
+    useEffect(()=>{
+      if(userData.personality.length > 0 || userData.hobbies.length > 0 || userData.values > 0){
+        generateMissions();
+      }
+    }, [userData]);
   
+
+
+
   const community = [
     { key: "c1", thumb: require("../images/th1.png"), opts: [
       {value:"c1", label:"커뮤니티1"}
@@ -48,6 +58,8 @@ const MainPage = () => {
     const [Navi,setNavi]=useState(
     navi.reduce((acc, item) => ({ ...acc, [item.key]: [] }), {})
    )
+
+   const dailyMissions=missions.filter(missions => missions.type === "daily").slice(0,2);
   
   return (
     <div className="Mp">
@@ -78,9 +90,13 @@ const MainPage = () => {
       <div className="Main_info">
         <div className="main_info_dm">
           <div className="dm_tit">일일 미션 <FaPlus /></div>
-          <Link className="dm_mission">미션 1</Link>
-          <Link className="dm_mission">미션 2</Link>
+          {/* <Link className="dm_mission">미션 1</Link>
+          <Link className="dm_mission">미션 2</Link> */}
+          <button className="dmies" disabled={loading} onClick={generateMissions}>
+            {loading ? <FaSpinner className="spin"></FaSpinner> : <FaCheck></FaCheck>}
+          </button>
         </div>
+           
         <div className="cummunity">
             {community.map(q => (
                              <div key={q.key} className="com_block">

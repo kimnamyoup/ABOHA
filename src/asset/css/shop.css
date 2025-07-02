@@ -34,17 +34,27 @@
 
 .recommand{
     width: 400px;
-    height: 255px;
-    background-color: blue;
+    height: 245px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+
 }
 .popular{
     width: 400px;
     height: 255px;
-    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 }
-.btns{
+.ctbtns{
     position: absolute;
     top: 105px; left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 .ct_tit{
    margin: 10px 0 0 30px; 
@@ -54,13 +64,29 @@
     display: flex;
     flex-direction: column;
     margin-left: 30px;
+    gap: 15px;
+    font-weight: bold;
+}
+.pobtns{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    font-weight: bold;
+    gap: 15px;
 }
 .r_main{
     display: flex;
     justify-content: space-around;
     gap: 20px;
     align-items: center;
-    height: 250px;
+    height: 150px;
+}
+.p_main{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    align-items: center;
+    height: 150px;
 }
 .pthumb{
     width: 100px;

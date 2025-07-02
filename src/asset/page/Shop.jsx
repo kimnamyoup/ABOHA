@@ -55,22 +55,46 @@ const Shop = () => {
     const Foryou = [
         {
              key: "f1", thumb: require("../images/rec1.png"), opts: [
-                { value: "f1", label: "상품1 \n 2000p", path: "/Set" }
+                { value: "f1", label: "추천상품 2000p", path: "/Set" }
             ]
         },
         {
              key: "f1", thumb: require("../images/rec2.png"), opts: [
-                { value: "f1", label: "상품2"+"\n"+"2000p", path: "/Set"}
+                { value: "f1", label: "추천상품  2000p", path: "/Set"}
             ]
         },
         {
              key: "f1", thumb: require("../images/rec3.png"), opts: [
-                { value: "f1", label: "상품3 2000p", path: "/Set"}
+                { value: "f1", label: "추천상품  2000p", path: "/Set"}
             ]
         },
         {
              key: "f1", thumb: require("../images/setting.png"), opts: [
-                { value: "f1", label: "환경설정"+"\n"+"2000p", path: "/Set"}
+                { value: "f1", label: "추천상품  2000p", path: "/Set"}
+            ]
+        },
+
+    ]
+
+    const popular = [
+        {
+             key: "f1", thumb: require("../images/rec1.png"), opts: [
+                { value: "f1", label: "인기상품1 3000p", path: "/Set" }
+            ]
+        },
+        {
+             key: "f1", thumb: require("../images/rec2.png"), opts: [
+                { value: "f1", label: "인기상품2 2000p", path: "/Set"}
+            ]
+        },
+        {
+             key: "f1", thumb: require("../images/rec3.png"), opts: [
+                { value: "f1", label: "인기상품2 2000p", path: "/Set"}
+            ]
+        },
+        {
+             key: "f1", thumb: require("../images/setting.png"), opts: [
+                { value: "f1", label: "인기상품2 2000p", path: "/Set"}
             ]
         },
 
@@ -83,6 +107,11 @@ const Shop = () => {
     const [answers, setAnswer] = useState(
         category.reduce((acc, c) => ({ ...acc, [c.key]: [] }), {})
     )
+
+     const [choice, setChoice] = useState(
+        Foryou.reduce((acc, po) => ({ ...acc, [po.key]: [] }), {})
+    )
+    
 
     const toggleSelect = (qkey, val) => {
         setAnswer(prev => {
@@ -105,7 +134,7 @@ const Shop = () => {
                 <h3 className='cate'>카테고리</h3>
                 {category.map((c) => (
                     <div key={c.key} className="question-block">
-                        <div className="btns">
+                        <div className="ctbtns">
                             {c.opts.map((opt) => (
                                 <Sbutton
                                     key={opt.value}
@@ -149,7 +178,28 @@ const Shop = () => {
                 </div>
             </div>
             <div className='popular'>
+                    <h3 className='ct_tit'>인기상품</h3>
+                <div className='p_main'>
+                    {popular.map(po => (
+                        <div key={po.key} className="pro_block">
+                            <div className="pobtns">
+                                <img className="pthumb" src={po.thumb} alt="t1" />
+                                {po.opts.map(opt => (
+                                    <Link
+                                        className="pthumb_comu"
+                                        key={opt.value}
+                                        active={select[po.key].includes(opt.value)}
+                                        onClick={() => {
 
+                                        }}
+                                    >
+                                        {opt.label}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
             <div className="navi_bar">
                 {navi.map(n => (

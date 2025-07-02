@@ -3,9 +3,12 @@ import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom'
 import "../css/choice2.css"
 import Sbutton from '../component/Sbutton'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
+import { useUserData } from '../../contexts'
 
 const Choice2 = () => {
   const navigate = useNavigate();
+  // const {saveHobbies} = useUserData();
+
   const question=[
     {
     key:"t1",
@@ -115,7 +118,8 @@ const downJson=()=>{
 
 
   const handleNext = (e) => {
-   
+      const groupedData= makeGrouped();
+      // saveHobbies(groupedData);
     // downJson();
 
     navigate('/choice3');

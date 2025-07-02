@@ -3,9 +3,11 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import Sbutton from "../component/Sbutton";
 import "../css/choice.css"
+import { useUserData } from "../../contexts";
 
 const Choice3 = () => {
   const navigate = useNavigate();
+  const {saveValues}=useUserData();
   const question = [
     {
       key: "three",
@@ -62,8 +64,9 @@ const Choice3 = () => {
   };
 
   const handleNext = (e) => {
+    const groupedData= makeGrouped();
     // downJson();
-
+    saveValues(groupedData);
     navigate("/start");
   };
 
