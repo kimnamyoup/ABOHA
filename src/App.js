@@ -14,6 +14,7 @@ import {  TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useRef } from 'react';
 import FadeWrapper from './asset/Layout.jsx';
 import MainPage from './asset/page/MainPage';
+import Shop from './asset/page/Shop.jsx';
 
 
 
@@ -44,7 +45,8 @@ function App() {
               <Route path="/Choice2" element={<Choice2 />} />
               <Route path="/Choice3" element={<Choice3 />} />
               <Route path="/start"   element={<Start />} />
-              <Route path="/MainPage"   element={<MainPage/>} />
+              <Route path="/MainPage" element={<MainPage/>} />
+              <Route path="/shop"  element={<Shop/>} />
             </Routes>
           </FadeWrapper>
         </CSSTransition>
