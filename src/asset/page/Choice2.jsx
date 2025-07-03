@@ -7,7 +7,7 @@ import { useUserData } from '../../contexts'
 
 const Choice2 = () => {
   const navigate = useNavigate();
-  // const {saveHobbies} = useUserData();
+  const {saveHobbies} = useUserData();
 
   const question=[
     {
@@ -119,7 +119,7 @@ const downJson=()=>{
 
   const handleNext = (e) => {
       const groupedData= makeGrouped();
-      // saveHobbies(groupedData);
+      saveHobbies(groupedData);
     // downJson();
 
     navigate('/choice3');
