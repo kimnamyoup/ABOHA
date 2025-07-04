@@ -3,10 +3,13 @@ import "../css/Mainpage.css";
 import { Link, NavLink } from 'react-router-dom';
 import { FaCheck, FaPlus, FaSpinner } from "react-icons/fa";
 import { useUserData } from "../../contexts";
+import { type } from "@testing-library/user-event/dist/type";
 
 const MainPage = () => {
   const { missions, loading, generateMissions, userData } = useUserData();
   const [visibleCount, setVisibleCount] = useState(2);
+
+  
 
   // useEffect 수정
   useEffect(() => {
@@ -85,9 +88,30 @@ const MainPage = () => {
   const [Navi, setNavi] = useState(
     navi.reduce((acc, item) => ({ ...acc, [item.key]: [] }), {})
   )
+  const [completedMissions, setCompletedMissions] = useState([]);
 
-  // "daily" 타입 미션만 가져오기
- const dailyMissions = missions;
+  const [refreshCount, setRefreshCount] = useState(0);
+  const MAX_REFRESH_COUNT = 3;
+
+  useEffect(() => {
+
+    if (
+      (userData.personality.length > 0 || userData.hobbies.length > 0 || userData.values.length > 0) &&
+      missions.length === 0
+    ) {
+      generateMissions();
+    }
+  }, [userData, missions, generateMissions]);
+
+  const handleMissionClick = (missionId) => {
+    setCompletedMissions(prev =>
+      prev.includes(missionId)
+        ? prev.filter(id => id !== missionId) 
+        : [...prev, missionId] 
+    );
+  };
+
+  const dailyMissions = missions;
 
   return (
     <div className="Mp">
@@ -117,34 +141,37 @@ const MainPage = () => {
       </div>
       <div className="Main_info">
         <div className="main_info_dm">
-          <div className="dm_tit">
-            일일 미션 <FaPlus />
-          </div>
+           <div className="dm_tit">일일 미션 <FaPlus /></div>
+                    {missions.length > 0 ? (
+                        missions.map(m => (
+                            <button
+                                key={m.id}
+                                className={`dm_mission ${completedMissions.includes(m.id) ? 'completed' : ''}`}
+                                onClick={() => handleMissionClick(m.id)}
+                            >
+                                {m.title}
+                            </button>
+                        ))
 
-          {dailyMissions.length > 0 ? (
-            dailyMissions.map(m => (
-              <Link key={m.id} className="dm_mission" to="#">
-                {m.title}
-                
-              </Link>
-            ))
-          ) : (
-            <p className="no_mission">미션이 없습니다.</p>
-          )}
+                    ) : (
+                        <p className="no_mission">미션이 없습니다.</p>
+                    )}
 
 
           {/* ② 새로고침 버튼 */}
           <button
             className="dmies"
-            disabled={loading}
+             disabled={loading || completedMissions.length > 0 || refreshCount >=3} 
             onClick={generateMissions}
           >
+            
             {loading ? (
               <FaSpinner className="spin" />
             ) : (
               <FaCheck />
             )}
           </button>
+          <span className='refresh-count'>({refreshCount}/{MAX_REFRESH_COUNT})</span>
         </div>
 
         <div className="cummunity">

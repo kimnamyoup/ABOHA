@@ -211,10 +211,20 @@
     color: #000;
     border: none;
     outline: none;
-    cursor: pointer;
     font-size: 14px;
-    display: flex;
+   display: block;
     text-align: center;
     align-items: center;
     font-weight: 500;
+    transition: all 0.3s;
+}
+
+.dm_mission.completed{
+    background-color: #6B3CEC;
+    color: #fff;
+}
+.refresh-count{
+    position: absolute;
+    right: 48px;
+    font-size: 14px;
 }

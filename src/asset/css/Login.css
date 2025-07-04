@@ -75,6 +75,8 @@ input{
     margin:  0 auto;
     text-decoration: none;
     color: #fff;
+    border: none;
+    outline: none;
 }
 .policy{
   font-size: 11px;  

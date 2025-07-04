@@ -17,6 +17,7 @@ export const UserDataProvider = ({ children }) => {
     hobbies: [],
     values: [],
   });
+  
 
   const [missions, setMissions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -25,7 +26,7 @@ export const UserDataProvider = ({ children }) => {
   const setDefaultMissions = () => {
     setMissions([
       { id: 1, title: "오늘 하루 감사한 일 3가지 적기", type: "default" },
-      { id: 2, title: "30분 산책하기",           type: "default" },
+      { id: 2, title: "30분 산책하기", type: "default" },
     ]);
   };
 
@@ -42,42 +43,45 @@ export const UserDataProvider = ({ children }) => {
   };
 
   const generateMissions = async () => {
-  setLoading(true);
+    setLoading(true);
 
-  try {
-    const res = await fetch("http://172.16.30.11:5000/good", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    });
+    try {
+      const res = await fetch("http://172.16.30.11:5000/good", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
 
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const result = await res.json();
-    console.log("API 응답 결과:", result);
-
-  
-    const rawArray = Object.keys(result)
-      .filter((key) => key.startsWith("result"))
-      .map((key) => result[key]);
-
-    console.log("추출된 미션 리스트:", rawArray);
-
- 
-    const formatted = rawArray.map((title, idx) => ({
-      id: Date.now() + idx,
-      title,
-      type: "daily",   
-    }));
-    setMissions(formatted);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const result = await res.json();
+      console.log("API 응답 결과:", result);
 
 
-  } catch (err) {
-    console.error("미션 생성 오류:", err.message);
-    setDefaultMissions();
-  } finally {
-    setLoading(false);
-  }
-};
+      const rawArray = Object.keys(result)
+        .filter((key) => key.startsWith("result"))
+        .map((key) => result[key]);
+
+      console.log("추출된 미션 리스트:", rawArray);
+
+
+      const formatted = result.map((title, idx) => ({
+        id: Date.now() + idx,
+        title,
+        type: "test4",
+        
+      }));
+      setMissions(formatted);
+      
+    
+
+
+    } catch (err) {
+      console.error("미션 생성 오류:", err.message);
+      setDefaultMissions();
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const value = {
     userData,
