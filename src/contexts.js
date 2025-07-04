@@ -46,7 +46,7 @@ export const UserDataProvider = ({ children }) => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://172.16.30.11:5000/good", {
+      const res = await fetch("https://8700-112-76-111-231.ngrok-free.app/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
