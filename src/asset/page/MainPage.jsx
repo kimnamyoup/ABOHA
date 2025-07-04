@@ -6,21 +6,38 @@ import { useUserData } from "../../contexts";
 import { type } from "@testing-library/user-event/dist/type";
 
 const MainPage = () => {
-  const { missions, loading, generateMissions, userData } = useUserData();
-  const [visibleCount, setVisibleCount] = useState(2);
-
+  const { 
+    missions, 
+    loading, 
+    generateMissions, 
+    refreshUncompletedMissions, 
+    userData,
+    completedMissions,  
+    setCompletedMissions, 
+    refreshCount,      
+    setRefreshCount       
+  } = useUserData();
+ 
+  const MAX_REFRESH_COUNT = 3;
   
 
-  // useEffect 수정
   useEffect(() => {
+    if (missions.length === 0) {
+      generateMissions();
+    }
+  }, [generateMissions, missions.length]);
+
+
+  // useEffect 수정
+    useEffect(() => {
+
     if (
-      userData.personality.length > 0 ||
-      userData.hobbies.length > 0 ||
-      userData.values.length > 0
+      (userData.personality.length > 0 || userData.hobbies.length > 0 || userData.values.length > 0) &&
+      missions.length === 0
     ) {
       generateMissions();
     }
-  }, [userData]);
+  }, [userData, generateMissions,missions.length]);
 
 
 
@@ -88,20 +105,8 @@ const MainPage = () => {
   const [Navi, setNavi] = useState(
     navi.reduce((acc, item) => ({ ...acc, [item.key]: [] }), {})
   )
-  const [completedMissions, setCompletedMissions] = useState([]);
 
-  const [refreshCount, setRefreshCount] = useState(0);
-  const MAX_REFRESH_COUNT = 3;
-
-  useEffect(() => {
-
-    if (
-      (userData.personality.length > 0 || userData.hobbies.length > 0 || userData.values.length > 0) &&
-      missions.length === 0
-    ) {
-      generateMissions();
-    }
-  }, [userData, missions, generateMissions]);
+ 
 
   const handleMissionClick = (missionId) => {
     setCompletedMissions(prev =>
@@ -111,7 +116,13 @@ const MainPage = () => {
     );
   };
 
-  const dailyMissions = missions;
+  const handleRefreshMissions = () => {
+    if (!loading && refreshCount < MAX_REFRESH_COUNT) { 
+      refreshUncompletedMissions();
+      setRefreshCount(prev => prev + 1);
+    }
+  };
+
 
   return (
     <div className="Mp">
@@ -161,8 +172,8 @@ const MainPage = () => {
           {/* ② 새로고침 버튼 */}
           <button
             className="dmies"
-             disabled={loading || completedMissions.length > 0 || refreshCount >=3} 
-            onClick={generateMissions}
+             disabled={loading || completedMissions.length > 2 || refreshCount >=3} 
+            onClick={handleRefreshMissions}
           >
             
             {loading ? (
@@ -180,16 +191,12 @@ const MainPage = () => {
               <div className="cbtns">
                 <img className="thumb" src={q.thumb} alt="t1" />
                 {q.opts.map(opt => (
-                  <Link
-                    className="thumb_comu"
+                  <NavLink
+                     className={({ isActive }) => `thumb_comu ${isActive ? 'active' : ''}`}
                     key={opt.value}
-                    active={select[q.key].includes(opt.value)}
-                    onClick={() => {
-
-                    }}
                   >
                     {opt.label}
-                  </Link>
+                  </NavLink>
                 ))}
               </div>
             </div>
@@ -207,17 +214,16 @@ const MainPage = () => {
           <div key={n.key} className="navi_item">
 
             {n.opts.map(opt => (
-              <Link
+              <NavLink
                 to={opt.path}
-                className="thumb_comu"
                 key={opt.value}
-                active={Navi[n.key].includes(opt.value)}
+                className={({ isActive }) => `thumb_comu ${isActive ? 'active' : ''}`}
                 onClick={() => {
                 }}
               >
                 <img className="thumb2" src={n.thumb} alt="navigation" />
                 {opt.label}
-              </Link>
+              </NavLink>
             ))}
           </div>
         ))}
