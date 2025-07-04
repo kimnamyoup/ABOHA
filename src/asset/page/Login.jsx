@@ -7,6 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState("*********");
 
   const handleNext=()=>{
+    localStorage.setItem('userToken', 'temporary-fake-token');
       navigate("/Choice1")
   }
   return (

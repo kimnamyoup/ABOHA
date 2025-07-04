@@ -29,7 +29,8 @@ function App() {
 
   return (
     <UserDataProvider>
-    <div className='phone'>
+       
+             <div className='phone'>
      <header className='stat'/>
      <TransitionGroup className="transition-group">
      <CSSTransition
@@ -55,6 +56,10 @@ function App() {
       </TransitionGroup>  
       <div className='botbar' />
     </div>
+      
+     
+    
+    
     </UserDataProvider>
     
     

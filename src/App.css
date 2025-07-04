@@ -1,4 +1,5 @@
 
+
 .phone{
    width: 400px;
   height: 852px;
@@ -9,8 +10,8 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
- background-color: #fff;
-overflow: hidden;
+  background-color: #fff;
+  overflow: hidden;
 }
 .stat{
   width: 400px;

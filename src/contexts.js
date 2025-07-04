@@ -15,7 +15,7 @@ export const UserDataProvider = ({ children }) => {
 
   const [userData, setUserData] = useState(() => {
     try {
-      const savedUserData = localStorage.getItem('userData');
+      const savedUserData = sessionStorage.getItem('userData');
       return savedUserData ? JSON.parse(savedUserData) : { personality: [], hobbies: [], values: [] };
     } catch (error) {
       console.error("저장된 사용자 데이터를 불러오는 데 실패했습니다.", error);
@@ -26,7 +26,7 @@ export const UserDataProvider = ({ children }) => {
  
   const [missions, setMissions] = useState(() => {
     try {
-      const savedMissions = localStorage.getItem('missions');
+      const savedMissions = sessionStorage.getItem('missions');
       return savedMissions ? JSON.parse(savedMissions) : [];
     } catch (error) {
       console.error("저장된 미션을 불러오는 데 실패했습니다.", error);
@@ -37,7 +37,7 @@ export const UserDataProvider = ({ children }) => {
  
   const [completedMissions, setCompletedMissions] = useState(() => {
     try {
-      const saved = localStorage.getItem('completedMissions');
+      const saved = sessionStorage.getItem('completedMissions');
       return saved ? JSON.parse(saved) : [];
     } catch (error) {
       console.error("저장된 완료 미션을 불러오는 데 실패했습니다.", error);
@@ -48,7 +48,7 @@ export const UserDataProvider = ({ children }) => {
  
   const [refreshCount, setRefreshCount] = useState(() => {
     try {
-      const saved = localStorage.getItem('refreshCount');
+      const saved = sessionStorage.getItem('refreshCount');
   
       return saved ? parseInt(saved, 10) : 0;
     } catch (error) {
@@ -62,7 +62,7 @@ export const UserDataProvider = ({ children }) => {
 
   useEffect(() => {
     try {
-      localStorage.setItem('userData', JSON.stringify(userData));
+      sessionStorage.setItem('userData', JSON.stringify(userData));
     } catch (error) {
       console.error("사용자 데이터를 저장하는 데 실패했습니다.", error);
     }
@@ -71,7 +71,7 @@ export const UserDataProvider = ({ children }) => {
 
   useEffect(() => {
     try {
-      localStorage.setItem('missions', JSON.stringify(missions));
+      sessionStorage.setItem('missions', JSON.stringify(missions));
     } catch (error) {
       console.error("미션을 저장하는 데 실패했습니다.", error);
     }
@@ -80,7 +80,7 @@ export const UserDataProvider = ({ children }) => {
 
   useEffect(() => {
     try {
-      localStorage.setItem('completedMissions', JSON.stringify(completedMissions));
+      sessionStorage.setItem('completedMissions', JSON.stringify(completedMissions));
     } catch (error) {
       console.error("완료 미션을 저장하는 데 실패했습니다.", error);
     }
@@ -88,7 +88,7 @@ export const UserDataProvider = ({ children }) => {
 
   useEffect(() => {
     try {
-      localStorage.setItem('refreshCount', refreshCount.toString());
+      sessionStorage.setItem('refreshCount', refreshCount.toString());
     } catch (error) {
       console.error("새로고침 횟수를 저장하는 데 실패했습니다.", error);
     }
