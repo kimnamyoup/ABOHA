@@ -109,7 +109,7 @@ export const UserDataProvider = ({ children }) => {
   const generateMissions = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("https://5f86bac66c6d.ngrok-free.app/good ", {
+      const res = await fetch("https://ef46a9fc881b.ngrok-free.app/good ", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
@@ -148,7 +148,7 @@ export const UserDataProvider = ({ children }) => {
         return;
       }
 
-      const res = await fetch("https://5f86bac66c6d.ngrok-free.app/good ", {
+      const res = await fetch("https://ef46a9fc881b.ngrok-free.app/good ", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
